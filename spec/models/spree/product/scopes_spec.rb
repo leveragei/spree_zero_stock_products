@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Product scopes" do
+describe "Product scopes", :type => :model do
 
   context "with scope on_hand" do
     before do
@@ -18,15 +18,15 @@ describe "Product scopes" do
     end
 
     it "includes a product with available stock" do
-      Spree::Product.on_hand.should include @product_with_stock
+      expect(Spree::Product.on_hand).to include @product_with_stock
     end
 
     it "excludes a product without available stock" do
-      Spree::Product.on_hand.should_not include @product_out_of_stock
+      expect(Spree::Product.on_hand).not_to include @product_out_of_stock
     end
 
     it "includes a product without stock that is backorderable" do
-      Spree::Product.on_hand.should include @product_backorderable
+      expect(Spree::Product.on_hand).to include @product_backorderable
     end
   end
 end

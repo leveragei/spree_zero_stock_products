@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Spree::Taxon do
+describe Spree::Taxon, :type => :model do
 
   before do
     stock_location = create(:stock_location, backorderable_default: false)
@@ -30,11 +30,11 @@ describe Spree::Taxon do
     end
 
     it "includes a product with available stock" do
-      @parent_taxon.active_products.should include @product_with_stock
+      expect(@parent_taxon.active_products).to include @product_with_stock
     end
 
     it "excludes a product without available stock" do
-      @parent_taxon.active_products.should_not include @product_out_of_stock
+      expect(@parent_taxon.active_products).not_to include @product_out_of_stock
     end
   end
 
@@ -45,8 +45,8 @@ describe Spree::Taxon do
     end
 
     it "includes both products with and without stock" do
-      @parent_taxon.active_products.should include @product_with_stock
-      @parent_taxon.active_products.should include @product_out_of_stock
+      expect(@parent_taxon.active_products).to include @product_with_stock
+      expect(@parent_taxon.active_products).to include @product_out_of_stock
     end
   end
 end
