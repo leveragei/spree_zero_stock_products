@@ -1,15 +1,11 @@
 source 'https://rubygems.org'
 
-platforms :jruby do
-  gem 'activerecord-jdbcsqlite3-adapter'
-  gem 'activerecord-jdbcpostgresql-adapter'
-  gem 'activerecord-jdbcmysql-adapter'
-end
+ruby "2.1.1"
+gem 'rails', '4.1.4'
 
-platforms :ruby do
-  gem 'sqlite3'
-  gem 'pg'
-  gem 'mysql2'
-end
+# Provides basic authentication functionality for testing parts of your engine
+gem 'spree', github: 'spree/spree', branch: '2-3-stable'
+# Provides basic authentication functionality for testing parts of your engine
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-3-stable'
 
 gemspec
